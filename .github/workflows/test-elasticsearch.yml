@@ -1,0 +1,38 @@
+name: Test Elasticsearch 6.1.0
+
+on:
+  workflow_dispatch: # 手动触发工作流
+
+jobs:
+  test-elasticsearch:
+    name: Test Elasticsearch
+    runs-on: ubuntu-latest # 使用 GitHub 提供的 Ubuntu 服务器环境
+
+    steps:
+    # 第一步：检出代码仓库（可以跳过本步骤，但推荐保留）
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # 第二步：拉取 Elasticsearch 镜像
+    - name: Pull Elasticsearch Docker Image
+      run: |
+        echo "拉取 Elasticsearch 镜像：6.1.0"
+        docker pull docker.elastic.co/elasticsearch/elasticsearch:6.1.0
+
+    # 第三步：启动 Elasticsearch 容器
+    - name: Start Elasticsearch Container
+      run: |
+        echo "启动 Elasticsearch 容器..."
+        docker run -d --name elasticsearch6.1 -p 9200:9200 -p 9300:9300 docker.elastic.co/elasticsearch/elasticsearch:6.1.0
+
+    # 第四步：等待 Elasticsearch 服务启动
+    - name: Wait for Elasticsearch to be ready
+      run: |
+        echo "等待 Elasticsearch 启动..."
+        sleep 30 # 等待 30 秒以确保服务完全启动
+
+    # 第五步：测试 Elasticsearch 是否正常运行
+    - name: Test Elasticsearch
+      run: |
+        echo "测试 Elasticsearch 服务是否正常运行..."
+        curl -X GET http://localhost:9200/ || exit 1
