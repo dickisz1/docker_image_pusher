@@ -4,15 +4,6 @@ k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.0.0
 xhofe/alist:latest
 #支持指定架构
 --platform=linux/arm64 xiaoyaliu/alist
-docker.elastic.co/elasticsearch/elasticsearch:6.1.0
-docker.elastic.co/logstash/logstash:6.1.0
-vulhub/hadoop:2.8.1
-bitnami/spark:2.4.6
-cimg/openjdk:8.0
-openjdk:8-jdk-alpine
-logstash:6.1.0
-elasticsearch:6.1.0
-spark:2.4.0
 log4j:1.2.17
 hadoop:5.16.2
 slf4j:1.5.6
