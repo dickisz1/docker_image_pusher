@@ -8,3 +8,4 @@ docker.elastic.co/elasticsearch/elasticsearch:6.1.0
 docker.elastic.co/logstash/logstash:6.1.0
 vulhub/hadoop:2.8.1
 bitnami/spark:2.4.6
+cimg/openjdk:8.0
